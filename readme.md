@@ -60,10 +60,10 @@ main()
 - Segmentation error occurs when accessing inaccessible part of memory. Usually the 0 to 0x1000 indices of memory are inaccessible and trying to access them results in segmentation voilation.
 - Generally data are stored at position which is multiple of 4. Trying to access memory index which is not multiple of 4 results in bus error which happens in some system
 
-##Type Casting
+## Type Casting/Coersion
 
 - Compiler automatically casts from lower to higher. Example: int -> long
-- To do opposite we type explicit command
+- To cast from higher data type to lower make use of explicit casting 
 ```c
 double a = 13.444;
 int b = (int) a // Here a is type casted from double to integer
