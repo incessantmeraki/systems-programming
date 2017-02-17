@@ -14,6 +14,11 @@
 - double: 8 bytes
 - pointer: 4/8 bytes (%lx)
 
+Verify the size of data type using sizeof.
+```c
+printf("The size of long in my CPU is %ld.", sizeof(long));
+```
+
 ## Use of typedef
 
 Use with structs
@@ -30,7 +35,7 @@ typedef unsigned long UL
 
 ## Buffer Overflow
 
-Care must be taken while reading strings using scanf into chracter array. If the size of the input string exceed the expected size then the characters will use/overwrite the memory that is not intented for it.
+Care must be taken while reading strings using scanf . If the size of the input string exceed the expected size then the characters will use/overwrite the memory that is not intented for it.
 
 ```c
 #include <stdio.h>
@@ -57,7 +62,7 @@ main()
 ```
 ## Segmentation and Bus Error
 
-- Segmentation error occurs when accessing inaccessible part of memory. Usually the 0 to 0x1000 indices of memory are inaccessible and trying to access them results in segmentation voilation.
+- Segmentation error occurs when accessing inaccessible part of memory. Usually the 0 to 0x1000 indices of memory are inaccessible and trying to access them results in segmentation voilation. 
 - Generally data are stored at position which is multiple of 4. Trying to access memory index which is not multiple of 4 results in bus error which happens in some system
 
 ## Type Casting/Coersion
@@ -67,4 +72,15 @@ main()
 ```c
 double a = 13.444;
 int b = (int) a // Here a is type casted from double to integer
+```
+
+## Pointer Arithmetic 
+
+When you add x to a pointer then you actually add ax where a = sizeof(pointer data_type)
+
+```c
+int *ip;
+printf("%ld", ip); //ip = 4
+ip++; // does pointer arithmetic
+printf("%ld", ip); //now ip = 8 
 ```
