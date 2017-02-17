@@ -37,29 +37,6 @@ typedef unsigned long UL
 
 Care must be taken while reading strings using scanf . If the size of the input string exceed the expected size then the characters will use/overwrite the memory that is not intented for it.
 
-```c
-#include <stdio.h>
-#include <stdlib.h>
-
-main()
-{
-  char s1[10];
-  char s2[10];
-  int i;
-  
-  printf("s1: 0x%lx\n", (unsigned long) s1);
-  printf("s2: 0x%lx\n", (unsigned long) s2);
-
-  printf("\nEnter s1 and s2:\n\n");
-  
-  if (scanf("%s", s1) != 1) exit(0);
-  if (scanf("%s", s2) != 1) exit(0);
-
-  printf("\n");
-  printf("s1: %s\n", s1);
-  printf("s2: %s\n", s2);
-}
-```
 ## Segmentation and Bus Error
 
 - Segmentation error occurs when accessing inaccessible part of memory. Usually the 0 to 0x1000 indices of memory are inaccessible and trying to access them results in segmentation voilation. 
@@ -73,6 +50,37 @@ main()
 double a = 13.444;
 int b = (int) a // Here a is type casted from double to integer
 ```
+## Memory
+
+Memory is an array of bytes that go from 0 to 0xffffffff on 32-bit architecture and from 0 to 0xffffffffffffffff on 64-bit architecture. However, all the indices of array are not valid.  
+
+### Allocating memory
+
+It is done using malloc and malloc assures returns a pointer which is a multiple of 8.
+
+```c
+int *a;
+a = (int *) malloc(sizeof(int))
+```
+
+### Memory Layout
+
+Memory is byte addressable.
+```
+|byte1|byte2|byte3|byte4|
+|   a |   b |  c  |  d  | 
+
+if bp, ip points to start of above memory(array)
+
+char *bp;
+int  *ip;
+
+Deferencing:
+bp => a
+ip => dcba
+```
+
+In above ip returns dcba instead of abcd. This is called little-endian format followed by the memory. 
 
 ## Pointer Arithmetic 
 
