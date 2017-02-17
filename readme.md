@@ -10,8 +10,8 @@
 - short: 2 bytes 
 - int: 4 bytes (%d, %x)
 - long: 4/8 bytes (%ld, %lx)
-- float: 4 bytes
-- double: 8 bytes
+- float: 4 bytes (%f)
+- double: 8 bytes (%lf)
 - pointer: 4/8 bytes (%lx)
 
 Verify the size of data type using sizeof.
