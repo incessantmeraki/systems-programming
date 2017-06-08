@@ -92,3 +92,19 @@ printf("%ld", ip); //ip = 4
 ip++; // does pointer arithmetic
 printf("%ld", ip); //now ip = 8 
 ```
+
+For example:
+```c
+typedef struct {
+  int x;
+  int y;
+}coordinate; //sizeof(cooridnate) = 4 + 4 = 8 bytes
+
+
+int main()
+{
+  coordinate *p;
+  printf("ld\n",p) //p  = 4
+  p++; // p = p + (sizeof(coordinate)x 1)
+  printf("ld\n",p); // p = 12
+```
